@@ -1,0 +1,37 @@
+{
+  "name": "telegram-bot-ui-node",
+  "version": "1.0.0",
+  "description": "telegram bot, vue, node",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node App.js",
+    "server": "nodemon App.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrski/telegram-bot-UI-Node.git"
+  },
+  "keywords": [
+    "test",
+    "vue",
+    "node",
+    "bot"
+  ],
+  "author": "andrski <andrski2009@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrski/telegram-bot-UI-Node/issues"
+  },
+  "homepage": "https://github.com/andrski/telegram-bot-UI-Node#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-telegram-bot-api": "^0.52.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
