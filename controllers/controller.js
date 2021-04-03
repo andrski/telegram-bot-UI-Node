@@ -7,6 +7,10 @@ bot.onText(/\/start/, (msg) => {
     chatId = id;
 });
 
+module.exports.getAll = async (req, res) => {
+    const users = await User.find({});
+    res.status(200).send(users);
+};
 
 module.exports.create = async (req, res) => {
     if (!req.body.name) {
@@ -23,7 +27,7 @@ module.exports.create = async (req, res) => {
     
         const user = await User.findOne({name: req.body.name});
     
-        if (chatId) {
+        if (chatId && user) {
             bot.sendMessage(chatId, `user has been create, id: ${user._id}`);
         }
     
@@ -32,16 +36,16 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.deleteUser = async (req, res) => {
-    if (req.body.name) {
-        await User.deleteOne({name: req.body.name});
+    if (req.body._id) {
+        await User.deleteOne({_id: req.body._id});
 
         if (chatId) {
-            bot.sendMessage(chatId, `user ${req.body.name} has been delete`);
+            bot.sendMessage(chatId, `user with id ${req.body._id} has been delete`);
         }
     
-        res.status(200).json({message: `user ${req.body.name} was deleted`});
+        res.status(200).json({message: `user ${req.body._id} was deleted`});
     } else {
-        res.status(400).json({message: 'not enter name'});
+        res.status(400).json({message: 'not enter user id'});
     }
     
 };
