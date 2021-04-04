@@ -23,7 +23,9 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+  origin: 'https://test-bot-listener.herokuapp.com'
+}));
 app.use(router);
 
 bot.onText(/\/id (.+)/, async (msg, [sourse, param]) => {
