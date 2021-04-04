@@ -75,7 +75,6 @@
         delete
       </v-btn>
     </div>
-    {{getUsers}}
   </v-container>
 </template>
 
