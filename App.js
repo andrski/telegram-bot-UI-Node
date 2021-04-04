@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -125,6 +126,22 @@ async function run() {
   }
 }
 // run().catch(console.dir);
+
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join('front_end/dist')))
+  //handle SPA
+  //  any routes from all
+  app.get(/.*/, (req, res)=>{
+      res.sendFile(__dirname + 'front_end/dist/index.html')
+  }) 
+}
+
+app.use(express.static(path.join('front_end/dist')))
+//handle SPA
+//  any routes from all
+app.get(/.*/, (req, res)=>{
+  res.sendFile(__dirname + 'front_end/dist/index.html')
+})                                 
 
 async function start() {
     await mongoose.connect(url, {
